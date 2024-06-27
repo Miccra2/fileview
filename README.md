@@ -5,6 +5,7 @@ tools for:
   - [ ] () print in file
   - [ ] () show in gui app and save in file
 - [ ] dumping files (structured data)
+  - [ ] (python) iso
   - [ ] () elf
   - [ ] () pe
   - [ ] () png
