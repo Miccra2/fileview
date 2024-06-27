@@ -1,6 +1,6 @@
 from sys import argv
 from dumb import dump
-from iso_struct import *
+from iso_isotypes import *
 
 
 def dump_hex_iso(data: bytes) -> None:
