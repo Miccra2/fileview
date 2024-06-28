@@ -124,4 +124,45 @@ typedef struct {
 typedef struct {
     U8      type;
     U8      identifier[5];              // "CD001"
+    U8      version;
 } ISO_VOLUME_DESCRIPTOR_SET_TERMINATOR;
+
+U8 ISO_DIRECTORY_IDENTIFIER_LENGTH;
+
+typedef struct {
+    U8      directory_identifier_length;
+    U8      extended_attribute_record_length;
+    U32     location_of_extent;         // "LBA" different format depending on L- or M-Table
+    U16     directory_number_of_parent_directory;
+    U8      directory_identntifier[ISO_DIRECTORY_IDENTIFIER_LENGTH];
+    U8      padding;
+} ISO_PATH_TABLE;
+
+typedef struct {
+    U8      years;
+    U8      month;
+    U8      day;
+    U8      hour;
+    U8      minute;
+    U8      second;
+    U8      gmt_offset;     // from -48 (west) through +52 (east)
+} ISO_BIN_TIME_DATE;
+
+typedef struct {
+    char    hidden : 1;
+    char    sub_directory : 1;
+    char    associated_file : 1;
+    char    format_information_in_extended : 1;
+    char    owner_and_group_permissions_in_extended : 1;
+    char    reserved : 2;
+    char    no_final_directory_record : 1;
+} ISO_DIRECTORY_FLAGS;
+
+typedef struct {
+    U8      directory_record_length;
+    U8      extended_attribute_record_length;
+    ULB32   extent_location;
+    ULB32   data_length;
+    ISO_BIN_TIME_DATE   date_and_time;
+    ISO_DIRECTORY_FLAGS directory_flags;
+} ISO_DIRECTORY;
